@@ -1,0 +1,61 @@
+Hi There,
+
+Integration Experience:
+1. Got mixed up with all the guides and links. 
+-- Documentation flow
+-- github repository
+-- links to the docs from inside the dashboard
+-- some of the code snippests are duplicated in a few places.
+
+When following the guide and copy the code examples, I couldnt compile the code and got many errors.
+I wasnt able to integrate (even with my dorrect domain this time:)) 
+Finally I decided to delete everything and intsall my own react app with using the guide,
+copied only spesific lines from the examples and it worked like a charm.
+I have a reason to believe that repository is not updated and the code tehre is broken.
+
+Login & dashboard
+1. I'v noticed that the submit button in the login screen is missing a user expeirience functionality.
+It seems enabled and it is clickable, before entering the email input.
+When clicking on it, I get no error or message that the email input is missing.
+Than I found the way to costomize it via login box, but unfortunatlly the preview did not indicate
+the changes while playing with its state.
+
+2. I didnt see any section of managing errors.
+-- Do I want to notify my user when something in wrong?
+-- Do I want to edit the errors myself?
+-- Do I want to give a field description, or tooltip about somthing or maybe I want to disable it?
+
+
+3. while I was searching my way in the portal, I found a broken QR code under setting up an authenticator app:
+Admin portal >> privacy & policy >> MFA.
+
+
+4. I have a way to navigate from the portal to the builder, but no navigation button to my home portal 
+although its the same base app: https://portal.frontegg.com/builder/app-experience/login-box
+the user needs to adit the url or go back by using the browser navigation.
+
+5. Privacy policy and T&C - In order to be enbaled and presented, it requires a mandatory link.
+if the link is not provided, to toggle stil shows this capability is enabled. the user might be confused 
+to enable this cabality although it wont work.
+
+6. Personal token is not generated correctly, seems no request is sent out when clicking on the generate btn.
+7. API token is generated successfully, I'v noticed that the 'Created By' column is showing 'Unknown' user
+although this information can easily identified.
+
+7. UX is exstremely easy and helpfull when every capability is toggled up.
+
+...
+
+
+
+Cypress - 
+In those two days I learned tons about cypress.
+My tests are pretty basic but already have ideas for many flows.
+I really wanted to give you the experience of POM but had diffeclties but passing a function
+in cy.origin() and I need to go deep and understand teh exact workarounds exists.
+
+Coundlt find a way to decent way to debug except actually put a debugger in my code. 
+it would of gone faster once I get the idea. 
+Already read about planty of ways to best practice, so igur to start.
+
+Thank You
