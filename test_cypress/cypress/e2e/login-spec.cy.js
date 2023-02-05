@@ -24,7 +24,7 @@ describe('Basic Login Test', () => {
       cy.get('input[name="email"]').type(email)
       cy.get('input[name="password"]').type(password + '{enter}')
     });
-    login.validateSuccessfulAccess();
+    login.validateSuccessfulAccess('successfully logged in to user app');
   });
 
   it('requires to display an error when password input is wrong', () => {
