@@ -1,4 +1,8 @@
 import {test_data} from "./login-test-data.js"
+import {Integration} from "../pages/Integration"
+import {Login} from "../pages/Login"
+const login = new Login();
+const integration = new Integration();
 
 
 Cypress.on('uncaught:exception', (err, runnable) => {
@@ -6,45 +10,33 @@ Cypress.on('uncaught:exception', (err, runnable) => {
   // after a syntax error with a valid field
   return false
 })
-
-/*Basic Positive Login Test:
-get url > clicks on the settings btn > enter email and password > clicks login btn
-assert authentication is successfull
-*/
-describe('Basic Positive Login Test', () => {
+ 
+describe('Basic Login Test', () => {
+  beforeEach('navigate to integarated app',() => {
+    integration.navigateInApp();
+  })
+  
   it('requires valid email and password for a successful login"', () => {
-    cy.visit(test_data.url)
-    cy.contains('Settings').click()
-    cy.log('clicked on settings button')
     const args = {args: {email: test_data.loginEmail, password: test_data.loginPassword}}
     cy.origin(test_data.loginBaseURL, args, ({email, password}) => {
+      //login.login(email,password)
+      //login.validateSuccessfulAccess('successfully logged in to user app')
       cy.get('input[name="email"]').type(email)
       cy.get('input[name="password"]').type(password + '{enter}')
     });
-    cy.get('div[class="App"]').should('contain', test_data.username);
-    cy.log('successfully logged in to user app')
+    login.validateSuccessfulAccess();
   });
+
+  it('requires to display an error when password input is wrong', () => {
+    const args = {args: {email: test_data.loginEmail}}
+    cy.origin(test_data.loginBaseURL, args, ({email}) => {
+       // login.login(email,'Moran2022!') // wrong password
+         cy.get('input[name="email"]').type(email)
+         cy.get('input[name="password"]').type('Moran2022!{enter}') // wrong password
+        // login.invalidCredentials('Incorrect email or password')
+        });
+    });
 })
   
 
-  /*Basic Positive Login Test:
-  get url > clicks on the settings btn > enter valid email > enter wrong password > clicks login btn
-  assert authentication failed
-  */
-  describe('Negative Wrong Password Login Test', () => {
-    it('requires to display an error when password input is wrong', () => {
-      cy.visit(test_data.url)
-      cy.contains('Settings').click()
-      cy.log('clicked on settings button')
-      const args = {args: {email: test_data.loginEmail}}
-      cy.origin(test_data.loginBaseURL, args, ({email}) => {
-           cy.get('input[name="email"]')
-           .type(email)
-           cy.get('input[name="password"]')
-           .type('Moran2022!{enter}') // wrong password
-          //   cy.get('div[data-test-id="login-error"]').should('contain', 'Incorrect email or password');
-          //   cy.log('Failed to login user app - wrong password')
-          });
-      });
-    })
-
+  
