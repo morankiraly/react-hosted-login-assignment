@@ -43,7 +43,6 @@ to enable this cabality although it wont work.
 although this information can easily identified.
 
 7. UX is exstremely easy and helpfull when every capability is toggled up.
-
 ...
 
 
